@@ -3,10 +3,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="container" style="padding: 15% 0">
-      <div class="row">
+      <div class="row" id="1stPart">
     <div class="col s12 m12">
       <div class="card-panel">
         <span class="white-text">
@@ -29,12 +30,88 @@
         </span>
       </div>
     </div>
+    <div class="row" id="2ndPart" style="display: none;">
+  <div class="col s12 m12">
+    <div class="card-panel">
+      <span class="white-text">
+        <div class="row">
+            <div class="container">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="Trans" type="text" class="validate">
+                  <label for="last_name">Enter Amount to withdraw or deposit</label>
+                </div>
+              </div>
+            </div>
+            <center>
+            <button class="btn waves-effect waves-light" type="submit" id="DepoWith" onclick="changeFunc();">Deposit</button>
+            <button class="btn waves-effect waves-light" type="submit" onclick="MoneySubmit();">Submit
+              <i class="material-icons right">send</i>
+            </button>
+            <center>
+        </div>
+      </div>
+      </span>
+    </div>
+  </div>
   </div>
   </body>
   <script>
     PageSubmit = function(){
       var ID = document.getElementById('id').value;
-      console.log(ID);
+      var settings = {
+        "async": true,
+        "url": "http://localhost:3000/home/"+ID,
+        "crossDomain": true,
+        "method": "GET",
+        "headers": {
+        }
+      }
+
+    $.ajax(settings).done(function (response) {
+      if(response==1){
+        document.getElementById('1stPart').style.display = 'none';
+        document.getElementById('2ndPart').style.display = 'block';
+      }
+    });
+    }
+    var z =1
+    changeFunc = function(){
+      if(z==1){
+        document.getElementById("DepoWith").innerHTML = "Withdraw";
+        z=0;
+      }
+      else {
+        document.getElementById("DepoWith").innerHTML = "Deposit";
+        z=1;
+      }
+    }
+    MoneySubmit = function(){
+      var DepoWith =document.getElementById('Trans').value;
+      var symbol = '+';
+      if(z==1){
+        symbol = '+';
+      }
+      else {
+        symbol = '-';
+      }
+      var settings = {
+        "async": true,
+        "url": "http://localhost:3000/"+symbol+ "/"+DepoWith,
+        "crossDomain": true,
+        "method": "GET",
+        "headers": {
+        }
+      }
+
+    $.ajax(settings).done(function (response) {
+      if(response>0){
+        alert("Final Amount: "+response);
+      }
+      else {
+        alert("Balance Insufficient");
+      }
+    });
     }
   </script>
 </html>

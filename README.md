@@ -1,6 +1,6 @@
-#Problem
+# Problem
 The Sen-sex market is huge, many transactions are performed every second in a sen-sex, many go unregulated and hence, money laundering, and other problems occur due to this. The problem is the 1. Security 2. Safety of an individual 3. Privacy
 
-#Solution
+# Solution
 We would like to solve these 3 problems by our solution:
 Dealings in stock market can be quite slow, stressful, etc. We will try to revolutionize the Stock Market completely. Our Stock Market will inculcate the idea of BLOCKCHAIN in its root. The security that the BlockChain technology incorporates in itself is one of, if not, the best. Converting every transaction into Blocks hashed by some random Hash function will make the the blocks secure to store. It will make the system decentralized, so one can change these blocks once they are made. This solves the one of the main issue, Security. The currency will be universally accepted and hence, would not change by inflation in a particular country. The typical transaction is quite slow and hence, the server may time out. BlockChain simply solves this by just not making the block, if old transactions are flawed. The person's identity is safe, as there will be no linkage with any transaction and a person, other than, just a Wallet Id (this is public, but the above statement holds true). This solves safety and maintain privacy of an individual.
